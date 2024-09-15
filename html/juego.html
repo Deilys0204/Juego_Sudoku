@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Sudoku</title>
+    <link rel="stylesheet" href="../css/juego.css"> <!-- Enlace al archivo de estilos CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <!-- Flecha para regresar -->
+        <a href="../index.html" class="back-arrow">&#8592;</a>
+
+        <!-- Título de la dificultad -->
+        <h1 id="titulo-dificultad">FÁCIL</h1>
+
+        <!-- Temporizador -->
+        <div id="timer" class="timer">00:00</div>
+    </header>
+    
+    <div id="juego">
+        <!-- Aquí se generará el tablero de Sudoku -->
+        <div id="sudoku-tablero"></div>
+    </div>
+
+    <!-- Botón para validar el Sudoku -->
+    <div class="bottom-controls">
+        <button id="completado-btn" class="validate-button">COMPLETADO</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dificultad = urlParams.get('dificultad') || 'facil';
+            const tituloDificultad = document.getElementById('titulo-dificultad');
+
+            // Cambiar el título según la dificultad seleccionada (sin el prefijo "Sudoku")
+            tituloDificultad.textContent = dificultad.charAt(0).toUpperCase() + dificultad.slice(1);
+
+            // Llamada al servidor para cargar el tablero del juego generado en C
+            fetch(`/cgi-bin/generar_tablero_${dificultad}.cgi`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('sudoku-tablero').innerHTML = data; // Coloca el tablero generado en el DOM
+                })
+                .catch(error => console.error('Error cargando el tablero:', error));
+
+            // Iniciar el temporizador
+            iniciarTemporizador();
+
+            // Validar Sudoku cuando se hace clic en el botón "Completado"
+            document.getElementById('completado-btn').addEventListener('click', validarSudoku);
+        });
+
+        // Función para iniciar el temporizador
+        function iniciarTemporizador() {
+            let timerElement = document.getElementById('timer');
+            let minutes = 0;
+            let seconds = 0;
+
+            setInterval(() => {
+                seconds++;
+                if (seconds === 60) {
+                    minutes++;
+                    seconds = 0;
+                }
+                timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Función para validar si el Sudoku está completo
+        function validarSudoku() {
+            const cells = document.querySelectorAll('#sudoku-tablero input');
+            let completo = true;
+
+            cells.forEach(cell => {
+                if (cell.value === '' || isNaN(cell.value) || cell.value < 1 || cell.value > 9) {
+                    completo = false;
+                }
+            });
+
+            if (completo) {
+                alert('¡Sudoku completado correctamente!');
+            } else {
+                alert('El Sudoku no está completo o contiene errores.');
+            }
+        }
+    </script>
+</body>
+</html>

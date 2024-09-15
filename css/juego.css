@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+
+/* Estilos generales */
+body {
+    font-family: "Pixelify Sans", sans-serif;
+    background-color: #b49979; 
+    color: #000000; 
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Mantiene el contenido centrado horizontalmente */
+    min-height: 100vh; 
+}
+
+/* Estilos del encabezado */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: #b49979;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 6em;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-shadow: 0.1em 0.1em 0.05em #1d1107, 0.2em 0.2em 0.05em #6b5940;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.back-arrow {
+    font-size: 2.5em;  /* Tamaño más grande para la flecha */
+    color: white;
+    text-decoration: none;
+    margin-right: 2.5em;  /* Mayor espaciado a la derecha de la flecha */
+}
+
+.timer {
+    font-size: 2.5em;  /* Tamaño más grande para el temporizador */
+    color: white;
+    margin-left: 2.5em;  /* Mayor espaciado a la izquierda del temporizador */
+}
+
+/* Ajustes para el área de juego */
+#juego {
+    margin-top: 5em;  /* Espacio desde la parte superior, después del encabezado fijo */
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+}
+
+#sudoku-tablero {
+    margin: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+}
+
+#sudoku-tablero input {
+    width: 100%;
+    height: 2em;
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid #333;
+}
+
+/* Estilos del botón de validación */
+.bottom-controls {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;  
+}
+
+.validate-button {
+    font-family: "Pixelify Sans", sans-serif; 
+    background-color: #e09a21; 
+    color: white; 
+    border: 0.2em solid #000000; 
+    padding: 0.5em 0.8em;  
+    margin: 1.2em;  
+    cursor: pointer; 
+    font-size: 1.5em;  
+    border-radius: 0.3em;  
+    transition: background-color 0.3s ease; 
+    position: relative; 
+    overflow: hidden;
+}
+
+.validate-button:hover {
+    background-color: #b77f35;
+}
+
+/* Pseudo - Elemento */
+button::before {
+    content: ''; 
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 8%; 
+    background-color: #ffd998; 
+    z-index: 0; 
+    border-top-left-radius: 0.3em; 
+    border-top-right-radius: 0.3em; 
+}
+
+/* Estilos de la flecha de regreso */
+.back-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5em;
+    height: 2.5em;
+    font-size: 2.5em;
+    color: white;
+    text-decoration: none;
+    background-color: #e09a21;
+    border-radius: 50%;
+    margin: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: 0.1em solid #000000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+}
+
+.back-arrow:hover {
+    background-color: #b77f35;  
+    transform: scale(1.1);  
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  
+}
+
+/* Estilos del temporizador */
+.timer {
+    display: flex;  
+    justify-content: center;  
+    align-items: center;  
+    font-size: 2.8em;  
+    font-weight: bold;  
+    color: white;  
+    background-color: #e09a21;  
+    padding: 0.3em 0.6em;  
+    border-radius: 0.5em;  
+    margin-left: 1em;  
+    margin-right: 1em; 
+    border: 0.1em solid #000000;  
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra para dar profundidad */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;  /* Engorda el texto del temporizador */
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* Suaviza la transición del hover */
+}
+
+.timer:hover {
+    background-color: #b77f35;  
+    transform: scale(1.1);  
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);  
+}
+
+
+
+
+
+
