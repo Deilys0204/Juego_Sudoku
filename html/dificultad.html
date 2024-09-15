@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccione la Dificultad - Sudoku</title>
+    <link rel="stylesheet" href="../css/style.css"> <!-- Enlace al archivo de estilos CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>SELECCIONE LA DIFICULTAD</h1>
+        <button onclick="iniciarJuego('facil')">FÁCIL</button>
+        <button onclick="iniciarJuego('intermedio')">INTERMEDIO</button>
+        <button onclick="iniciarJuego('dificil')">DIFÍCIL</button>
+    </header>
+
+    <!-- Script para manejar los eventos de clic -->
+    <script>
+        function iniciarJuego(dificultad) {
+            // Abre una nueva ventana con el juego y la dificultad seleccionada
+            window.open('juego.html?dificultad=' + dificultad, '_blank');
+        }
+    </script>
+</body>
+</html>

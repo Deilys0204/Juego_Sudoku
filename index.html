@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <script>
+        // Función para el botón "SALIR"
+        function salir() {
+            if (confirm("¿Estás seguro de que quieres salir?")) { // Confirmación antes de salir
+                window.close(); // Intenta cerrar la ventana
+            }
+        }
+
+        // Función para el botón "NUEVO JUEGO"
+        function nuevoJuego() {
+            window.location.href = "html/dificultad.html"; // Redirige a la página de selección de dificultad
+        }
+    </script>
 </head>
 <body>
     <header>
